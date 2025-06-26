@@ -1,0 +1,73 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+main {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+a.button {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+a.button:hover {
+  background-color: #555;
+}
+
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+input, select {
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+input[type=submit] {
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+input[type=submit]:hover {
+  background-color: #555;
+}/*# sourceMappingURL=style.css.map */
