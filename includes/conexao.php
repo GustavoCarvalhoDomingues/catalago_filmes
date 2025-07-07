@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "catalogo_filmes";
+$dbname = "lista_produtos";
 
 $conn = mysqli_connect($host, $user, $pass, $dbname);
 

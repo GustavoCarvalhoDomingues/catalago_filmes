@@ -2,26 +2,44 @@
 include 'includes/header.php';
 include 'includes/crud.php';
 
-if ($_POST) {
-    adicionarFilme($_POST['titulo'], $_POST['diretor'], $_POST['ano'], $_POST['genero']);
-    header("Location: index.php");
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = $_POST['nome'];
+    $preco = $_POST['preco'];
+    $quantidade = $_POST['quantidade'];
+
+    // Upload de imagem
+    $imagem_nome = $_FILES['imagem']['name'];
+    $imagem_temp = $_FILES['imagem']['tmp_name'];
+    $caminho_imagem = 'uploads/' . basename($imagem_nome);
+
+    // Cria pasta se não existir
+    if (!is_dir('uploads')) {
+        mkdir('uploads', 0755, true);
+    }
+
+    // Move imagem
+    move_uploaded_file($imagem_temp, $caminho_imagem);
+
+    adicionarProduto($nome, $preco, $quantidade, $caminho_imagem);
+
+    header("Location: listar_produtos.php");
+    exit;
 }
 ?>
 
-<h2>Adicionar Filme</h2>
+<h2>Adicionar Produto</h2>
+<form method="POST" enctype="multipart/form-data">
+    <label>Nome:</label><br>
+    <input type="text" name="nome" required><br><br>
 
-<form method="POST">
-    <label>Título</label>
-    <input type="text" name="titulo" required>
+    <label>Preço:</label><br>
+    <input type="number" step="0.01" name="preco" required><br><br>
 
-    <label>Diretor</label>
-    <input type="text" name="diretor" required>
+    <label>Quantidade:</label><br>
+    <input type="number" name="quantidade" required><br><br>
 
-    <label>Ano</label>
-    <input type="number" name="ano" required>
-
-    <label>Gênero</label>
-    <input type="text" name="genero" required>
+    <label>Imagem do Produto:</label><br>
+    <input type="file" name="imagem"><br><br>
 
     <input type="submit" value="Adicionar">
 </form>

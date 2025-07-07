@@ -1,33 +1,34 @@
 <?php
 include 'conexao.php';
 
-function listarFilmes() {
+function listarProdutos() {
     global $conn;
-    $sql = "SELECT * FROM filmes";
+    $sql = "SELECT * FROM lista_produtos";
     return mysqli_query($conn, $sql);
 }
 
-function buscarFilme($id) {
+function buscarProduto($id) {
     global $conn;
-    $sql = "SELECT * FROM filmes WHERE id = $id";
+    $sql = "SELECT * FROM lista_produtos WHERE id = $id";
     $result = mysqli_query($conn, $sql);
     return mysqli_fetch_assoc($result);
 }
 
-function adicionarFilme($titulo, $diretor, $ano, $genero) {
+function adicionarProduto($nome, $preco, $quantidade, $imagem) {
     global $conn;
-    $sql = "INSERT INTO filmes (titulo, diretor, ano, genero) VALUES ('$titulo', '$diretor', $ano, '$genero')";
+    $sql = "INSERT INTO lista_produtos (nome, preco, quantidade, imagem)
+            VALUES ('$nome', $preco, $quantidade, '$imagem')";
     return mysqli_query($conn, $sql);
 }
 
-function editarFilme($id, $titulo, $diretor, $ano, $genero) {
+function editarProduto($id, $nome, $preco, $quantidade) {
     global $conn;
-    $sql = "UPDATE filmes SET titulo='$titulo', diretor='$diretor', ano=$ano, genero='$genero' WHERE id=$id";
+    $sql = "UPDATE lista_produtos SET nome='$nome', preco=$preco, quantidade=$quantidade WHERE id=$id";
     return mysqli_query($conn, $sql);
 }
 
-function excluirFilme($id) {
+function excluirProduto($id) {
     global $conn;
-    $sql = "DELETE FROM filmes WHERE id=$id";
+    $sql = "DELETE FROM lista_produtos WHERE id=$id";
     return mysqli_query($conn, $sql);
 }
